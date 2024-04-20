@@ -1,2 +1,2 @@
 # python
-Изучение Python
+Решение задач Python
