@@ -19,6 +19,7 @@
 # Boring
 
 import requests
+import json
 
 with open('dataset.txt') as f:
     x = f.read().splitlines()
