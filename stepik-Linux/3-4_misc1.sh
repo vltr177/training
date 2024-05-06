@@ -14,6 +14,8 @@
 # 
 # bye
 
+#!/bin/bash
+
 gdc () # Two int arguments
 {
 	let m=$1
