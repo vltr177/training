@@ -1,3 +1,3 @@
 Решение задач
-#python
-#bash
+python
+bash
