@@ -1,2 +1,3 @@
-# python
 Решение задач
+python
+bash
