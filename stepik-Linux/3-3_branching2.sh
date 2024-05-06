@@ -32,9 +32,7 @@
 
 #!/bin/bash
 
-work=ok
-
-while [ $work == "ok" ]; do
+while [ True ]; do
 	echo "enter your name:"
 	read name
 	if [[ -z $name ]]
