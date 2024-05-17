@@ -1,4 +1,5 @@
-Решение задач
-python
-bash
-sql
+## Решение задач ##
+
+- [Python: основы и применение](https://stepik.org/course/512/syllabus)
+- bash
+- sq
