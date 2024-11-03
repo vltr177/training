@@ -210,3 +210,142 @@ public class Main {
     }
 }
 
+/*
+Робот ВАЛЛ-И любит играть в такую игру: он называет натуральное число, а ЕВА берет последнюю цифру этого числа и увеличивает на n. Какое число получила ЕВА?
+
+Входные данные:
+программа получает на вход два натуральных числа:
+x - число, которое загадывает ВАЛЛ-И
+n - на сколько увеличивается последняя цифра
+Выходные данные:
+выведите ответ на задачу
+*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int x = sc.nextInt();
+    int n = sc.nextInt();
+    int number = (x % 10) + n;
+    System.out.println( number ); 
+    }
+}
+
+/*
+ВАЛЛ-И собирается съездить на уборку в соседний город и хочет рассчитать время на дорогу. По карте он определил расстояние s в километрах и настроил свою скорость равной v км/ч. Составьте программу, которая поможет ВАЛЛ-И определять время, проводимое в пути.
+
+Входные данные:
+s - расстояние
+v - скорость
+Выходные данные:
+выведите ответ на задачу
+*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    float s = sc.nextInt();
+    int v = sc.nextInt();    
+    float time = s / v;
+    System.out.println( time ); 
+    }
+}
+
+/*
+ВАЛЛ-И за 1 день выучивает n иностранных слов. Составьте программу, которая рассчитает, сколько иностранных слов выучит робот за d дней.
+
+Входные данные:
+
+n - количество слов
+d - количество дней
+Выходные данные:
+
+выведите ответ на задачу
+*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int d = sc.nextInt();
+    System.out.println( n * d ); 
+    }
+}
+
+/*
+ВАЛЛ-И случайно забрел на ферму, где увидел лошадей и гусей. Лошадей он насчитал h штук, гусей - g штук. Составьте программу, которая бы помогла ВАЛЛ-И узнать количество ног обитателей фермы.
+
+Входные данные:
+
+h - количество лошадей
+g - количество гусей
+Выходные данные:
+
+выведите ответ на задачу
+*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int h = sc.nextInt();
+    int g = sc.nextInt();
+    System.out.println( (2 * g) + (4 * h) ); 
+    }
+}
+
+/*
+
+ВАЛЛ-И и ЕВА решили встретиться и выехали навстречу друг другу. Скорость ВАЛЛ-И составляет x км/ч, а ЕВЫ - y км/ч. Когда они встретились, то ВАЛЛ-И сообщил, что был в пути t часов, а ЕВА сказала, что потратила на дорогу m часов. Составьте программу, которая бы вычислила, какое расстояние было между ВАЛЛ-И и ЕВОЙ в момент их отправления.
+
+Входные данные:
+x - скорость ВАЛЛ-И
+y - скорость ЕВЫ
+t - время ВАЛЛ-И
+m - время ЕВЫ
+Выходные данные:
+выведите ответ на задачу
+*/
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int x = sc.nextInt();
+    int y = sc.nextInt();
+    int t = sc.nextInt();
+    int m = sc.nextInt();
+    int s1 = x * t;
+    int s2 = y * m;
+    System.out.println( s1 + s2 ); 
+    }
+}
+
+/*
+ВАЛЛ-И называет натуральное число, а ЕВА записывает 3 последовательных числа, следующих после него. Напишите программу, которая выводит числа  ЕВЫ через черточку.
+Входные данные:
+натуральное число
+Выходные данные:
+выведите ответ на задачу
+*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int x = sc.nextInt();
+    System.out.println( (x+1) + "-" + (x+2) + "-" + (x+3) ); 
+    }
+}
+
