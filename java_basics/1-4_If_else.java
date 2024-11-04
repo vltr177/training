@@ -170,3 +170,56 @@ if (test1 || test2) {
      }
 }
 }
+
+// Две равные строки
+// С клавиатуры построчно вводятся три строки. Если среди них есть ровно две равные строки то вывести "Yes", в противном случае - "No".
+
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+    Scanner sc = new Scanner(System.in);
+    String a = sc.nextLine();
+    String b = sc.nextLine();
+    String c = sc.nextLine();
+    boolean ab = a.equals(b);
+    boolean bc = b.equals(c);
+    boolean ac = a.equals(c);
+    boolean two = ab || bc || ac;
+    boolean all = ab && bc;
+        
+    if ( two && !all ) {
+        System.out.println("Yes");
+    }else{
+            System.out.println("No");
+         }
+    }
+}
+
+/* Шоколадка
+Требуется определить, можно ли от шоколадки размером n × m долек отломить k долек, если разрешается сделать один разлом по прямой между дольками (то есть разломить шоколадку на два прямоугольника).
+Входные данные
+Вводятся 3 числа: n, m и k; k не равно n × m. Гарантируется, что количество долек в шоколадке не превосходит 30000.
+Выходные данные
+Программа должна вывести слово YES, если возможно отломить указанное число долек, в противном случае вывести слово NO.
+*/
+
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int k = sc.nextInt();
+        int s = n * m;
+        Boolean piece = (k % n == 0) || (k % m == 0);
+        Boolean part = (s - k >= m) || (s - k >= n);
+        if (piece && part){
+            System.out.println("YES");
+            }
+        else{
+            System.out.println("NO");
+            }
+        }
+    }
