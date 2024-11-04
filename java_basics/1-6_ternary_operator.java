@@ -141,6 +141,7 @@ class MyProgram{
 Вводятся четыре числа: координаты ферзь (два числа) и координаты другой фигуры (два числа), каждое число вводится в отдельной строке. Координаты - целые числа в интервале от 1 до 8.
 Выходные данные
 Требуется вывести слово YES, если слон сможет побить фигуру за 1 ход и NO - в противном случае.
+*/
 
 import java.util.Scanner;
 
@@ -157,3 +158,101 @@ class MyProgram{
     }
 }
 
+/* Коровы
+По данному числу n закончите фразу "На лугу пасется..." одним из возможных продолжений: "n коров", "n корова", "n коровы", правильно склоняя слово "корова".
+Входные данные
+Дано число n (n<100).
+Выходные данные
+Программа должна вывести введенное число n и одно из слов: коров, корова или коровы, например, 1 корова, 2 коровы, 5 коров. Между числом и словом должен стоять ровно один пробел.
+*/
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int cow = n % 10;
+        
+        if (cow == 1 && n != 11){
+            System.out.println("1 корова");
+        }else {
+            System.out.println( (cow <= 4  && cow != 0) && (n < 11 || n > 20) ? (n + " коровы") : (n + " коров"));
+        }
+    }
+}
+
+/* Котлеты
+На сковородку одновременно можно положить k котлет. Каждую котлету нужно с каждой стороны обжаривать m минут непрерывно. За какое наименьшее время удастся поджарить с обеих сторон n котлет?
+Входные данные
+Вводятся 3 числа: k, m и n. Все числа не превосходят 32000.
+Выходные данные
+Вывести время, за которое все котлеты будут обжарены.
+*/
+
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int k = sc.nextInt();
+        int m = sc.nextInt();
+        int n = sc.nextInt();
+        System.out.println(n <= k ? (m * 2) : n * 2 % k == 0 ? (n * 2 / k * m) : (n * 2 / k * m + m));
+    }
+}
+
+/* Упорядочить три числа
+Дано три числа, записанный в отдельных строках. Упорядочите их в порядке неубывания. Программа должна считывать три числа a, b, c, затем программа должна менять их значения так, чтобы стали выполнены условия a <= b <= c, затем программа выводит тройку a, b, c.
+Входные данные
+Вводятся три числа, каждое записано в отдельной строке.
+Выходные данные
+Выведите ответ на задачу.
+*/
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        int max = a < b ? Math.max(b,c) : Math.max(a,c);
+        int min = a > b ? Math.min(b,c) : Math.min(a,c);
+        int med = (a != max && a != min) ? a : ((b != max && b != min) ? b : c);
+        System.out.println(min + " " + med + " " + max);
+    }
+}
+
+/* Римская система счисления
+Дано число X. Требуется перевести это число в римскую систему счисления.
+Входные данные
+Дано число X в десятичной системе счисления (1  ≤  X  ≤  100).
+Выходные данные
+Выведите X в римской системе счисления.
+*/
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+            if(a/10==1) {System.out.print("X");}
+            if(a/10==2) {System.out.print("XX");}
+            if(a/10==3) {System.out.print("XXX");}
+            if(a/10==4) {System.out.print("XL");}
+            if(a/10==5) {System.out.print("L");}
+            if(a/10==6) {System.out.print("LX");}
+            if(a/10==7) {System.out.print("LXX");}
+            if(a/10==8) {System.out.print("LXXX");}
+            if(a/10==9) {System.out.print("XC");}
+            if(a%10==1) {System.out.print("I");}
+            if(a%10==2) {System.out.print("II");}
+            if(a%10==3) {System.out.print("III");}
+            if(a%10==4) {System.out.print("IV");}
+            if(a%10==5) {System.out.print("V");}
+            if(a%10==6) {System.out.print("VI");}
+            if(a%10==7) {System.out.print("VII");}
+            if(a%10==8) {System.out.print("VIII");}
+            if(a%10==9) {System.out.print("IX");}
+    }
+}
