@@ -129,3 +129,85 @@ class MyProgram {
         System.out.println( i );
     }
 }
+
+// Сумма квадратов
+// По данному натуральному n вычислите сумму 12+22+...+n2.
+import java.util.Scanner;
+
+class MyProgram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int i = 1;
+        int res = 0;
+            while (i <= a) {
+            res += i*i;
+            i += 1;
+        }
+        System.out.println( res );
+    }
+}
+
+/* Утренняя пробежка
+В первый день спортсмен пробежал x километров, а затем он каждый день увеличивал пробег на 10% от предыдущего значения. По данному числу y определите номер дня, на который пробег спортсмена составит не менее y километров.
+Входные данные
+Программа получает на вход действительные числа x и y
+Выходные данные
+Программа должна вывести одно натуральное число.
+*/
+import java.util.Scanner;
+
+class MyProgram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Double x = sc.nextDouble();
+        Double y = sc.nextDouble();
+        int d = 1;
+        Double dist = x;
+            while ( dist < y ) {
+            d += 1;
+            dist += 0.1*dist;
+        }
+        System.out.println( d );
+    }
+}
+
+// Сумма цифр натурального числа
+// Дано натуральное число N. Напишите програму, вычисляющую сумму цифр числа N.
+import java.util.Scanner;
+
+class MyProgram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int sum = 0;
+            while ( n%10 != 0 ) {
+                sum += n%10;
+                n = n/10;
+        }
+        System.out.println( sum );
+    }
+}
+
+/* Количество элементов, больших предыдущего
+Последовательность состоит из натуральных чисел и завершается числом 0. Определите, сколько элементов этой последовательности больше предыдущего элемента. Гарантируется ввод хотя бы двух ненулевых чисел.
+Числа, следующие за числом 0, считывать не нужно.
+*/
+import java.util.Scanner;
+
+class MyProgram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int l = 0;
+        int count = 0;
+    	while (n != 0) {
+            l = n;            
+            n = sc.nextInt();   
+            if ( n > l )
+                count += 1;
+        }
+        System.out.println( count );
+    }
+}
+
