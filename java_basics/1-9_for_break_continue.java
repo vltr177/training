@@ -74,3 +74,91 @@ class MyProgram {
     }
 }
 
+// Найдите Куб
+// Пользователь вводит слова до тех пор, пока не введёт "СТОП". Необходимо выяснить, было ли среди введённых слов слово "Куб". Если да, то выведите "YES", если нет, то  "NO".
+import java.util.Scanner;
+class MyProgram {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        boolean is_cube = false;
+        for (String word = sc.nextLine(); true ; word = sc.nextLine()){
+            if (word.equals("СТОП")) {
+                break;
+            }
+            if (word.equals("Куб")) {
+                is_cube = true;
+                continue;
+            }
+        }
+        if (is_cube)
+            System.out.println("YES");
+        else
+            System.out.println("NO");
+    }
+}
+
+// Min и Max
+// Задача на поиск минимума и максимума. Пользователь вводит натуральное число n, затем n целых чисел. Необходимо определить и вывести на экран минимальное и максимальное из них. 
+// Обратите внимание, что в большинстве задач как минимальное и максимальное значения часто используются -2*109 и 2*109 соответственно. Но в олимпиадных задачах всегда смотрите на ограничения по числам (в них всегда оговорены границы, в которых будут лежать значения переменных).
+import java.util.Scanner;
+
+class MyProgram {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a = sc.nextInt();    
+        int min = a;
+        int max = a;
+        for (int i = 1; i < n ; i++){
+            a = sc.nextInt();            
+            if ( a < min)
+                min = a;
+            if ( a > max)
+                max = a;
+        }
+        System.out.println(min);
+        System.out.println(max);
+    }
+}
+
+// Факториал
+// Вводится натуральное число n. Вычислите n! ("эн-факториал") – произведение всех натуральных чисел от 1 до n 
+import java.util.Scanner;
+
+class MyProgram {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int fact = 1;
+        for (int i = 2; i <= n ; i++){
+            fact *= i;            
+        }
+        System.out.println(fact);
+    }
+}
+
+// Произведение
+// Пользователь вводит целые числа до тех пор, пока не введёт слово "СТОП" (гарантируется, что других слов не будет). Найдите произведение ненулевых чисел. Если же такое произведение найти не удалось, то выведите на экран "Не найдено".
+import java.util.Scanner;
+
+class MyProgram {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int multi = 1;
+        Boolean flag = false;
+        for (String number = sc.nextLine(); !number.equals("СТОП") ; number = sc.nextLine()){
+            int n = Integer.parseInt(number);
+            if (n == 0)
+                continue;
+            multi *= n;
+            flag = true;
+        }
+        if (flag) {
+            System.out.println(multi);
+            }
+        else {
+            System.out.println("Не найдено");
+            }
+    }
+}
+    
