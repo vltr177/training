@@ -191,6 +191,59 @@ class MyProgram {
         for ( int i = N; i != 0 ; i /= 2 ){
             res = i % 2;
             System.out.print(res);
+
+
         }
+    }
+}
+// Найдите Куб 2.0
+// Пользователь вводит слова до тех пор, пока не введёт "СТОП". Среди введённых слов могут быть слова - паразиты, а именно: "'ээээ" или "потом". Слова-паразиты не считаются нормальными словами.
+// Необходимо выяснить, было ли среди введённых слов слово "Куб". Если да, то выведите, каким по счёту нормальным словом оно было введено. В противном случае выведите на экран слово "NO".
+
+import java.util.Scanner;
+class MyProgram {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int count = 0;
+        Boolean flag = false;
+        for ( String word = sc.nextLine(); !word.equals("СТОП") ; word = sc.nextLine() ) {
+            if ( (word.equals("ээээ")) || (word.equals("потом")) ) {
+                continue;
+            }
+            count += 1;
+            if ( word.equals("Куб") ) {
+                flag = true;
+                break;
+            }
+        }
+        if (flag) {
+            System.out.println(count);
+            }
+        else {
+            System.out.println("NO");
+        }
+    }
+}
+
+// Сколько элементов, равных максимуму?
+// Последовательность состоит из натуральных чисел и завершается числом 0. Всего вводится не более 10000 чисел (не считая завершающего числа 0). Определите, сколько элементов этой последовательности равны ее наибольшему элементу.
+// Числа, следующие за числом 0, считывать не нужно
+import java.util.Scanner;
+
+class MyProgram {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int max = 0;
+        int count = 0;
+        for ( int n = sc.nextInt(); n != 0 ; n = sc.nextInt() ){
+            if (n > max) {
+                count = 0;
+                max = n;
+            }
+            if (n == max) {
+                count +=1;
+            }
+        }
+        System.out.println(count);
     }
 }
