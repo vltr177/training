@@ -222,3 +222,23 @@ class MyProgram{
     }
 }
 
+/* Произведение чисел числа
+Дано натуральное число. Найдите произведение его цифр.
+Входные данные
+Задано натуральное число n.
+Выходные данные
+Выведите ответ на задачу.
+*/
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int multi  = 1;
+        for (int i = n; i != 0; i /= 10){
+            multi *= i % 10;
+            }
+    System.out.println(multi);
+    }
+}
