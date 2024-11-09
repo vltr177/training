@@ -42,3 +42,111 @@ class MyProgram{
     }
 }
 
+/* Доллары
+Напишите программу, которая выводила бы на экран числа (например число а) следующим образом:
+a a.$
+Входные данные
+Вводятся два натуральных числа a и b (a <= b).
+Выходные данные
+Выведите ответ на задачу.
+*/
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n1 = sc.nextInt();
+        int n2 = sc.nextInt();
+        for (int i = n1; i <= n2; i++){
+            System.out.println(i + " " + i + ".$");
+            }
+    }
+}
+
+/* Произведение 1
+Составьте программу, которая запрашивает ввод n чисел и считает их произведение.
+Входные данные
+На первой строке вводится натуральное число n. Затем вводится n строк, на каждой из которых находится ровно одно целое число.
+Выходные данные
+Выведите единственное число - ответ на задачу.
+*/
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        long multi = 1;
+        for (int i = 1; i <= n; i++){
+            long a = sc.nextInt();
+            multi *= a;
+            }
+        System.out.println(multi);
+    }
+}
+
+// Нечётные цифры
+// Составьте программу, которая в одну строку через пробел выводит все нечетные цифры.
+class MyProgram{
+    public static void main(String[] args){
+         for (int i = 1; i <= 10; i++){
+            if (i % 2 != 0 )
+                System.out.print(i + " ");
+             }
+    }
+}
+
+/* Произведение 2
+Вводится 2 целых числа a и b (a <= b). Необходимо вычислить произведение всех чисел от а до b включительно
+Входные данные
+Заданы два целых числа а и b
+Выходные данные
+Выведите единственное число - ответ на задачу.
+*/
+
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        long multi = 1;
+        
+        for (int i = a; i <= b; i++){
+            multi *= i;
+            }
+        System.out.println(multi);
+    }
+}
+
+// Вывод чисел "вниз"
+// Напишите программу, которая выводит в столбик целые числа от 50 до 0  с шагом 10.
+class MyProgram{
+    public static void main(String[] args){
+        for (int i = 50; i >= 0; i -= 10){
+            System.out.println(i);
+            }
+    }
+}
+
+/* Вывод чисел "вниз" Pro
+Напишите программу, которая выводит в столбик целые числа от a до b (a >= b) с шагом c. Границы включаются.
+Входные данные
+Заданы три целых числа а, b, с, где a > b
+*/
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+                
+        for (int i = a; i >= b; i -= c){
+            System.out.println(i);
+            }
+    }
+}
+
