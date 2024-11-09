@@ -150,3 +150,75 @@ class MyProgram{
     }
 }
 
+/* Средний возраст
+В компьютер вводятся по очереди данные об имени и возрасте n учащихся класса. Напишите программу, которая вычисляет средний возраст учащихся класса.
+Входные данные
+Вводится натуральное число n - количество человек в классе. Затем вводится n пар строчек. Каждая пара состоит из имени и возраста ученика.  
+Выходные данные
+Выведите единственное действительное число - ответ на задачу.
+*/
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        float sum = 0;
+        for (int i = 1; i <= n; i++){
+            String name = sc.next();
+            int age = sc.nextInt();
+            sum += age;
+            }
+    System.out.println(sum/n);
+    }
+}
+
+/* Таблица умножения
+Напишите программу, которая по заданному с клавиатуры числу n печатает таблицу умножения от 1 до 9.
+Входные данные
+Задано натуральное число n.
+Выходные данные
+Выведите ответ на задачу.
+*/
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for (int i = 1; i <= 9; i++){
+            System.out.println(n + " * " + i + " = " + (i*n));
+            }
+    }
+}
+
+/* Совы нежные
+Ознакомьтесь с этим произведением искусства: совы нежные
+Напишите программу, которая по введенному с клавиатуры числу выводит соответствующее число сов. 
+Картинка тетушки Совы состоит из символов. Размер одной картинки 5 на 11 символов.
+:)\_____/(:
+ {(@)v(@)}
+ {|~- -~|}
+ {/^'^'^\}
+ ===m-m===
+Между двумя соседними совами имеется пустая строка.
+Входные данные
+Задано целое неотрицательное число n.
+*/
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++){
+            System.out.println(":)\\_____/(:");
+            System.out.println(" {(@)v(@)}");
+            System.out.println(" {|~- -~|}");
+            System.out.println(" {/^'^'^\\}");
+            System.out.println( " ===m-m===");
+            System.out.println("");
+            }
+    }
+}
+
