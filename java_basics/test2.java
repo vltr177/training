@@ -23,7 +23,7 @@ class choice_search {
             }
         else {
             // сортируем массив
-            qSort(numbers, 0, 99);
+            qSort(numbers, 0, len - 1);
             for (int i = 0; i < len; i++){
                 System.out.println(numbers[i]);
             // ищем бинарным поиском
@@ -77,19 +77,22 @@ class choice_search {
 
     // Функция бинарного поиска
 
-    public static int search2(int[] numbers, int value, int start, int end) {
-        int label = end/2;
+    public static int search2(int[] numbers, int value, int left, int right) {
+        int label = left + (right - left) / 2;
+        System.out.print((right-left) + "D");
         if (value < numbers[label]) {
-            start = start;
-            end = label;   
+            left = left;
+            right = left + label;   
         }
         if (value > numbers[label]) {
-             start = label;
-             end = end;
+             left = left + label;
+             right = right;
         }
-        else
-            return value;
-        search2(numbers, value, start, end);
+        if (value == numbers[label])
+            return label;
+        if ((right - left ) < 1 )
+            return -1;
+        return search2(numbers, value, left, right);
     }
 
 
