@@ -18,7 +18,7 @@ public class choice_search {
         int value = sc.nextInt();                               // запрашиваем искомый элемент
         int choise = sc.nextInt();                              // запрашиваем метод поиска (1 - простой, !1 - бинарный)
         if (choise == 1) {
-            res = search1(numbers, value);                      // вызываем функциею простого поиска
+            res = search1(numbers, value, 0, len - 1);                      // вызываем функцию простого поиска
             }
         else {
             // сортируем массив
@@ -26,6 +26,7 @@ public class choice_search {
             for (int i = 0; i < len; i++)
                 System.out.println(numbers[i]);
             // ищем бинарным поиском
+            res = search2(numbers, value, 0, len - 1);
         }
         if (res != -1) {                                        // выводим результат
             System.out.println("Элемент найден в позиции " + res);
@@ -74,7 +75,40 @@ public class choice_search {
 
     // Функция бинарного поиска
 
+    public static int search2(int[] numbers, int value, int start, int end) {
+        int label = end/2;
+        if (value < label) {
+            start = start;
+            end = label}
+        }
+        if (value > label) {
+             start = label;
+             end = end;
+        }
+        else
+            return value;
+        search2(int[numbers, value, start, end);
+    }
+
+
     // Функция измерения времени
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
