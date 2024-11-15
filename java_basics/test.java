@@ -1,3 +1,11 @@
+/* Hello, Java World :)
+Код мой. Быструю сортировку подсмотрел, но смысл понимаю, ибо почитывал ранее книжку "Грокаем алгоритмы" и
+велосипед нет смысла изобретать. Qsort делал ранее в питоне на 10 строк, но тема так просто в Java не взлетела,
+ибо не умеет она нормально в массивы, когда их нужно быстро разрезать и клеить.
+Можно было это упростить в списках, но тогда добавилось бы ещё прямое и обратное преобразование.
+По быстродействию понятно, что бинарный поиск быстрее простого, если бы не сортировка.
+ */
+
 import java.util.Scanner;
 import java.util.Random;
 
@@ -15,7 +23,7 @@ public class choice_search {
         }
         int value = sc.nextInt();                       // запрашиваем искомый элемент
 
-        // ПРОСТОЙ ПОИСК O(N)
+        // ПРОСТОЙ ПОИСК за время O(N)
         System.out.println("ПРОСТОЙ ПОИСК");
         long start_time = System.nanoTime();            // фиксируем запуск таймера
         search1(numbers, value, flag);                  // вызов функции простого поиска
@@ -26,7 +34,7 @@ public class choice_search {
 
         flag = false;
 
-        // БЫСТРАЯ СОРТИРОВКА МАСИВА O(N * log N) || (O * N^2) + БИНАРНЫЙ ПОИСК O(log N)
+        // БЫСТРАЯ СОРТИРОВКА МАСИВА за время O(N * log N) или (O * N^2) + БИНАРНЫЙ ПОИСК O(log N)
         System.out.println("БЫСТРАЯ СОРТИРОВКА МАССИВА");
         start_time = System.nanoTime();
         qSort(numbers, 0, len - 1);          // вызов функции быстрой сортировки
@@ -53,48 +61,51 @@ public class choice_search {
     }
 
     // ФУНКЦИЯ "Быстрая сортировка массива"
-    public static void qSort(int[] array, int begin, int end) {
-        if (end <= begin) return;
-        int pivot = partition(array, begin, end);
-        qSort(array, begin, pivot-1);
-        qSort(array, pivot+1, end);
+    public static void qSort(int[] numbers, int low, int high) {
+        // Рекурсивно проходим по массиву функцией перераспределения
+        if (high <= low) return;
+        int pivot = halflife(numbers, low, high);
+        qSort(numbers, low, pivot-1);
+        qSort(numbers, pivot+1, high);
     }
     // ФУНКЦИЯ "Перераспределение массива для быстрой сортировки"
-    static int partition(int[] array, int begin, int end) {
-        int pivot = array[begin + (end - begin) / 2];
-        int counter = begin;
-        for (int i = begin; i < end; i++) {
-            if (array[i] < array[pivot]) {
-                int temp = array[counter];
-                array[counter] = array[i];
-                array[i] = temp;
+    // раскидываем налево и направо вокруг опорного элемента значения ячеек массива
+    // опорный элемент по центру
+    static int halflife(int[] numbers, int low, int high) {
+        int support = numbers[low + (high - low) / 2];
+        int counter = low;
+        for (int i = low; i < high; i++) {
+            if (numbers[i] < numbers[support]) {
+                int temp = numbers[counter];
+                numbers[counter] = numbers[i];
+                numbers[i] = temp;
                 counter++;
             }
         }
-        int temp = array[pivot];
-        array[pivot] = array[counter];
-        array[counter] = temp;
+        int temp = numbers[support];
+        numbers[support] = numbers[counter];
+        numbers[counter] = temp;
         return counter;
     }
 
-    // ФУНКЦИЯ "Бинарный поиск"
+    // ФУНКЦИЯ "БИНАРНЫЙ ПОИСК"
     public static void search2(int[] numbers, int value, int low, int high, boolean flag) {
-        while (low <= high) {
-            int mid = (low + high) / 2;
-            int label = numbers[mid];
-            if (value == label) {
+        while (low <= high) {                   // делаем, пока индексы не сравняются
+            int mid = (low + high) / 2;         // динамически меняем центр в зависимости от новой области
+            int label = numbers[mid];           // запоминаем середину области поиска
+            if (value == label) {               // если нашли искомое, выходим
                 flag = true;
                 return;
             }
-            if (value < label)
+            if (value < label)                 // если недолёт, сужаем область поиска до левой части области минус центр
                 high = mid - 1;
-            if (value > label)
+            if (value > label)                 // если перелёт, сужаем область поиска до правой части плюс центр
                 low = mid + 1;
         }
         return;
     }
 
-    // ФУНКЦИЯ "Вывод результата"
+    // ФУНКЦИЯ "ВЫВОД РЕЗУЛЬТАТА"
     public static void result(boolean flag) {
         if (flag == false) {
             System.out.println("Элемент найден");
