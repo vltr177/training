@@ -1,6 +1,6 @@
-/* Код мой. Быструю сортировку подсмотрел, но смысл понимаю, ибо почитывал ранее книжку "Грокаем алгоритмы" и
-велосипед нет смысла изобретать. Qsort делал ранее в питоне на 10 строк, но тема так просто в Java не взлетела,
-ибо не умеет она нормально в массивы, когда их нужно быстро разрезать и клеить.
+/* Код мой. Быструю сортировку подсмотрел, даже дважды), но смысл понимаю, ибо почитывал ранее книжку
+"Грокаем алгоритмы" и велосипед нет смысла изобретать. Qsort делал ранее в питоне на 10 строк, но тема так просто
+в Java не взлетела, ибо не умеет она нормально в массивы, когда их нужно быстро разрезать и клеить.
 Можно было это упростить в списках, но тогда добавилось бы ещё прямое и обратное преобразование.
 По быстродействию понятно, что бинарный поиск быстрее простого, если бы не сортировка.
  */
@@ -21,21 +21,21 @@ public class search {
         int[] numbers = new int[len];                   // инициализируем массив с целыми числами заданного размера
         for (int i = 0; i < len; i++) {                 // заполняем массив случайными значениями от 0 до 100 000
             numbers[i] = rnd.nextInt(100000);
-        }
+          }
         int value = sc.nextInt();                       // запрашиваем искомый элемент
 
         // ПРОСТОЙ ПОИСК за время O(N)
         System.out.println("ПРОСТОЙ ПОИСК");
         long start_time = System.nanoTime();            // фиксируем запуск таймера
         search1(numbers, value, flag);                  // вызов функции простого поиска
-        result(flag);                                   // вызов результата простого поиска
+        result(flag);                                   // вывод результата простого поиска
         long end_time = System.nanoTime();
         // вывод времени поиска, нс/1 000 000 в мс
         System.out.println("Время простого поиска = " + ((end_time - start_time)/1000000) + " мс");
 
         flag = false;
 
-        // БЫСТРАЯ СОРТИРОВКА МАСИВА за время O(N * log N) или (O * N^2) + БИНАРНЫЙ ПОИСК O(log N)
+        // БЫСТРАЯ СОРТИРОВКА МАСИВА за время O(N * log N) или O(N^2) + БИНАРНЫЙ ПОИСК O(log N)
         System.out.println("БЫСТРАЯ СОРТИРОВКА МАССИВА");
         start_time = System.nanoTime();
         qSort(numbers, 0, len - 1);          // вызов функции быстрой сортировки
@@ -50,7 +50,7 @@ public class search {
         System.out.println("Время бинарного поиска = " +  ((end_time - start_time)/1000000) + " мс");
     }
 
-    // Функция "Поиск перебором значений"
+    // ФУНКЦИЯ "ПОИСК ПЕРЕБОРОМ ЗНАЧЕНИЙ"
     public static void search1(int[] numbers, int value, boolean flag) {
         for (int i = 0; i < numbers.length; i++) {
             if (value == numbers[i]) {
@@ -58,35 +58,29 @@ public class search {
                 return;
             }
         }
-        return;
     }
 
-    // ФУНКЦИЯ "Быстрая сортировка массива"
+    // ФУНКЦИЯ "БЫСТРАЯ СОРТИРОВКА"
     public static void qSort(int[] numbers, int low, int high) {
-        // Рекурсивно проходим по массиву функцией перераспределения
-        if (high <= low) return;
-        int pivot = halflife(numbers, low, high);
-        qSort(numbers, low, pivot-1);
-        qSort(numbers, pivot+1, high);
-    }
-    // ФУНКЦИЯ "Перераспределение массива для быстрой сортировки"
-    // раскидываем налево и направо вокруг опорного элемента значения ячеек массива
-    // опорный элемент по центру
-    static int halflife(int[] numbers, int low, int high) {
-        int support = numbers[low + (high - low) / 2];
-        int counter = low;
-        for (int i = low; i < high; i++) {
-            if (numbers[i] < numbers[support]) {
-                int temp = numbers[counter];
-                numbers[counter] = numbers[i];
-                numbers[i] = temp;
-                counter++;
+        if (numbers.length == 0 || low >= high) return;         // выходим если массив пустой, или всё переделили
+        int base = low + (high - low) / 2;                      // новый опорный элемент по центру массива
+        int border = numbers[base];
+        //Обмен элементами массива
+        int i = low, j = high;
+        while (i <= j) {
+            while (numbers[i] < border) i++;
+            while (numbers[j] > border) j--;
+            if (i <= j) {
+                int temp = numbers[i];
+                numbers[i] = numbers[j];
+                numbers[j] = temp;
+                i++;
+                j--;
             }
         }
-        int temp = numbers[support];
-        numbers[support] = numbers[counter];
-        numbers[counter] = temp;
-        return counter;
+        //рекурсивная сортировка частей массива
+        if (low < j) qSort(numbers, low, j);
+        if (high > i) qSort(numbers, i, high);
     }
 
     // ФУНКЦИЯ "БИНАРНЫЙ ПОИСК"
@@ -103,12 +97,11 @@ public class search {
             if (value > label)                 // если перелёт, сужаем область поиска до правой части плюс центр
                 low = mid + 1;
         }
-        return;
     }
 
     // ФУНКЦИЯ "ВЫВОД РЕЗУЛЬТАТА"
     public static void result(boolean flag) {
-        if (flag == false) {
+        if (!flag) {
             System.out.println("Элемент найден");
         } else {
             System.out.println("Элемент не найден");
