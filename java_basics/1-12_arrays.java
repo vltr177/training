@@ -149,3 +149,29 @@ class MyProgram{
         }
     }
 }
+
+// Переставить соседние
+// Переставьте соседние элементы списка (A[0] c A[1], A[2] c A[3] и т.д.). Если элементов нечетное число, то последний элемент остается на своем месте.
+import java.util.Scanner;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int temp = 0;
+        Boolean flag = false;
+        int[] m = new int[n];
+        for (int i = 0; i < n; i++)
+            m[i] = sc.nextInt();
+        for (int i = 0; i < n; i += 2){
+            if (i == n - 1){
+                System.out.println(m[i]);
+                break;
+            }
+            temp = m[i];
+            m[i] = m[i+1];
+            m[i+1] = temp;
+            System.out.println(m[i]);
+            System.out.println(m[i+1]);
+        }
+    }
+}
