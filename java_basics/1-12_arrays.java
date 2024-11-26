@@ -175,3 +175,63 @@ class MyProgram{
         }
     }
 }
+
+/* Кубы 2
+Вводятся числа a и b. Создайте массив, в котором будут храниться кубы чисел от a до b. Затем вводится число n и n чисел после него.
+Используя данные из массива найдите кубы этих. Если вводится число, не принадлежащее заданному диапазону, выведите на экран слово "Error". */
+import java.util.Scanner;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int temp = a;
+        int[] cube = new int[b - a + 1];
+        for (int i = 0; i <= (b - a); i++){
+            cube[i] = (int) Math.pow(temp,3);
+            temp += 1;
+        }
+        int n = sc.nextInt();
+        for (int k = 0; k < n; k++){
+            int number = sc.nextInt();
+            for (int i = 0; i <= (b - a); i++){
+                if (cube[i] == (int) Math.pow(number,3)){
+                    System.out.println(cube[i]);
+                    break;
+                }    
+                if (i == (b - a))
+                    System.out.println("Error");
+            }
+        }
+    }
+}
+
+/* Кегельбан
+N кеглей выставили в один ряд, занумеровав их слева направо числами от 1 до N. Затем по этому ряду бросили K шаров, при этом i-й шар сбил все кегли с номерами от a до b включительно. Определите, какие кегли остались стоять на месте.
+Входные данные
+Программа получает на вход количество кеглей N и количество бросков K. Далее идет K пар чисел a, b , при этом 1abN.
+Выходные данные
+Программа должна вывести последовательность из N символов, где j-й символ есть “I”, если j-я кегля осталась стоять, или “.”, если j-я кегля была сбита. */
+import java.util.Scanner;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int[] bowls = new int[N+1];
+        for (int i = 1; i <= N; i++)
+            bowls[i] = 1;
+        int K = sc.nextInt();
+        for (int i = 1; i <= K; i++){
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            for (int j = a; j <= b; j++)
+                bowls[j] = 0;
+        }
+        for (int i = 1; i <= N; i++){
+            if (bowls[i] == 1)
+                System.out.print("I");
+            else
+                 System.out.print(".");      
+        }
+    }
+}
