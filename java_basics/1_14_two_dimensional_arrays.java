@@ -197,7 +197,8 @@ class MyProgram{
     }
 }
 
-//
+// Поворот на 90
+// Вводятся 2 натуральных числа: n и m. Затем вводится двумерный массив размером n*m. Поверните его на 90 градусов по часовой стрелке и выведите на экран (через пробел).
 
 import java.util.Scanner;
 class MyProgram{
@@ -221,6 +222,114 @@ class MyProgram{
                 System.out.print(array2[i][j] + " ");
             }
         System.out.println();
+        }
+    }
+}
+
+// Новый поворот
+// Вводятся 2 натуральных числа:  n и m. Затем вводится двумерный массив размером n*m. Поверните его на 90 градусов против часовой стрелке и выведите на экран (через пробел).
+import java.util.Scanner;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] array = new int[n][m];
+
+        for (int i = 0; i<n; i++)
+            for (int j = 0; j<m; j++)
+                array[i][j] = sc.nextInt();
+
+        int[][] array2 = new int[array[0].length][array.length];
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                array2[array[i].length - j - 1][i] = array[i][j];
+            }
+        }
+        
+        for (int i = 0; i<m; i++){
+            for (int j = 0; j<n; j++){
+                System.out.print(array2[i][j] + " ");
+            }
+        System.out.println();
+        }
+    }
+}
+
+// Что он нам несёт?
+// Вводится натуральное число n. Затем вводится двумерный массив размером n*n. Отобразите его относительно главной диагонали (из левого верхнего угла до правого нижнего) и выведите на экран (через пробел).
+import java.util.Scanner;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[][] array = new int[n][n];
+
+        for (int i = 0; i<n; i++)
+            for (int j = 0; j<n; j++)
+                array[i][j] = sc.nextInt();
+
+        int[][] array2 = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                array2[i][j] = array[j][i];
+            }
+        }
+        
+        for (int i = 0; i<n; i++){
+            for (int j = 0; j<n; j++){
+                System.out.print(array2[i][j] + " ");
+            }
+        System.out.println();
+        }
+    }
+}
+
+/* Магический квадрат
+Напишите программу, которая проверяет, является ли квадратная матрица магическим квадратом?
+Входные данные
+Программа получает на вход число n < 11, являющееся числом строк и столбцов в массиве. Далее во входном потоке идет n строк по n чисел, являющихся элементами массива.
+Выходные данные
+Программа должна выводить слово YES для магического квадрата и слово NO для не магического.*/
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int array [][] = new int[n][n];
+        int ett = 0;
+        int ett1 = 0;
+        int ind = 0;
+        int ind1 = 0;
+        int k =0;
+        int k1 =0;
+
+        for (int i = 0; i<n ; i++){
+            for (int j = 0; j<n ; j++){
+                array[i][j] = sc.nextInt();
+                ett = array[i][j]+ ett;
+            }
+            if (ett == k){
+                ind = ind+1;
+            }
+            k = ett;
+            ett = 0;
+        }
+
+        for (int i = 0; i<n ; i++){
+            for (int j = 0; j<n ; j++){
+                ett1 = array[j][i] + ett1;
+                if (ett1 == k1){
+                    ind1 = ind1+1;
+                }
+            }
+            k1 = ett1;
+            ett1 = 0;
+        }
+        
+        if (ind == n-1 && ind1 == n-1 ){
+            System.out.println("YES");
+        }else {
+            System.out.println("NO");
         }
     }
 }
