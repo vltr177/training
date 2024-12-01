@@ -248,3 +248,41 @@ class MyProgram{
     }
 }
 
+/* Максимальная сумма
+Дан зубчатый двумерный массив. необходимо определить номер строки с максимальной суммой, максимальную сумму и саму строку, которая даёт эту сумму.
+Входные данные:
+Вводится число n - количество строк зубчатого массива. Затем информация вводится следующими блоками: число k - количество элементов в строке и потом k элементов.
+Выходные данные:
+Выведите на экран номер строки с максимальной суммой и сумму на разных строках. На следующей строчке выведите саму строку, которая даёт эту сумму.*/
+import java.util.Scanner;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] array = new int[n][m];
+        int max = 0, count = 0;
+        
+        for (int i = 0; i<n; i++)
+            for (int j = 0; j<m; j++){
+                array[i][j] = sc.nextInt();
+                if (array[i][j] > max)
+                    max = array[i][j];
+            }
+
+        for (int i = 0; i<n; i++)
+            for (int j = 0; j<m; j++)
+                if (array[i][j] == max){
+                    count ++;
+                    break;
+                }
+        System.out.println(count);
+
+        for (int i = 0; i<n; i++)
+            for (int j = 0; j<m; j++)
+                if (array[i][j] == max){
+                    System.out.print(i+ " ");
+                    break;
+                }
+    }
+}
