@@ -122,3 +122,95 @@ class MyProgram{
     }
 }
 
+/*Побочная диагональ
+Дано число n (n < 10). Создайте массив n×n и заполните его по следующему правилу:
+- числа на диагонали, идущей из правого верхнего в левый нижний угол, равны 1;
+- числа, стоящие выше этой диагонали, равны 0;
+- числа, стоящие ниже этой диагонали, равны 2.
+Входные данные
+Программа получает на вход число n (1 < n).
+Выходные данные
+Необходимо вывести  полученный массив. Числа разделяйте одним пробелом.*/
+
+import java.util.Scanner;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[][] array = new int[n][n];
+        for (int i = 0; i<n; i++)
+            for (int j = 0; j<n; j++){
+                if  (i + j < n - 1)
+                    array[i][j] = 0;
+                if  (i + j == n - 1)
+                    array[i][j] = 1;
+                if  (i + j > n - 1)
+                    array[i][j] = 2;
+            }
+        for (int i = 0; i<n; i++){
+            for (int j = 0; j<n; j++)
+                System.out.print(array[i][j]+" ");
+            System.out.println();
+        }
+    }
+}
+
+/*Симметричная ли матрица?
+Проверьте, является ли двумерный массив симметричным относительно главной диагонали. Главная диагональ — та, которая идёт из левого верхнего угла двумерного массива в правый нижний.
+Входные данные
+Программа получает на вход число n < 100, являющееся числом строк и столбцов в массиве. Далее во входном потоке идет n строк по n чисел, являющихся элементами массива.
+Выходные данные
+Программа должна выводить слово YES для симметричного массива и слово NO для несимметричного.*/
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[][] array = new int[n][n];
+        boolean flag = true;
+        for (int i = 0; i<n; i++)
+            for (int j = 0; j<n; j++){
+                array[i][j] = sc.nextInt();
+            }
+        for (int i = 0; i<n; i++)
+            for (int j = 0; j<n; j++)
+                if ((i != j) & (array[i][j] != array[j][i])){
+                    flag = false;
+                    break;
+                }
+        if (flag)
+            System.out.print("YES");
+        else
+            System.out.print("NO");            
+    }
+}
+
+/*Магический квадрат
+Напишите программу, которая проверяет, является ли квадратная матрица магическим квадратом?
+Входные данные
+Программа получает на вход число n < 11, являющееся числом строк и столбцов в массиве. Далее во входном потоке идет n строк по n чисел, являющихся элементами массива.
+Выходные данные
+Программа должна выводить слово YES для магического квадрата и слово NO для не магического.*/
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[][] array = new int[n][n];
+        int sum1 = 0, sum2 = 0, sum3 = 0;
+
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                array[i][j] = sc.nextInt();
+                if(i < 1) sum1 += array[i][j];
+                if(j < 1) sum2 += array[i][j];
+            }
+            sum3 += array[i][i];
+        }
+        sc.close();
+        System.out.println((sum1 == sum2 && sum2 == sum3) ? "YES" : "NO");
+    }
+}
+
