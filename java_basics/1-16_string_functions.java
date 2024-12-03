@@ -15,3 +15,23 @@ class MyProgram{
             System.out.println("no");
     }
 }
+
+2------
+
+import java.util.Scanner;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+//        char [] part5 = new char[5];
+        String text = sc.next();
+        int len = text.length();
+        System.out.println(text.charAt(2));
+        System.out.println(text.charAt(len-2));
+//        text.getChars(0, 5, part5, 0);
+//        System.out.println(part5);
+        System.out.println(text.substring(0,5));
+        System.out.println(text.substring(0,len-2));
+        System.out.println(text.substring(3,len));
+        System.out.println(len);
+    }
+}
