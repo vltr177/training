@@ -178,3 +178,37 @@ class MyProgram{
         System.out.println(count);
     }
 }
+
+/*Интересный перевод
+Ввод и вывод данных производятся через стандартные потоки ввода-вывода.
+На планете Роботов очень не любят десятичную систему счисления, поэтому они попросили Вас написать программу, которая заменяет все встречающиеся в тексте числа на эти же числа, но в двоичной системе счисления.
+Входные данные
+Единственная строка, состоящая из любых символов. Длина строки не превышает 255 символов. Гарантируется, что во всех числах нет ведущих нулей.
+Выходные данные
+Выведите преобразованную строку.*/
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String x = sc.nextLine();
+        String numbers = "";
+        char[] chars = x.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if (Character.isDigit(chars[i])) {
+                numbers += chars[i];
+            } else {
+                if (!numbers.isEmpty()) {
+                    String digit = Integer.toBinaryString(Integer.parseInt(numbers));
+                    System.out.print(digit);
+                    numbers = "";
+                }
+                System.out.print(chars[i]);
+            }
+            if (!numbers.isEmpty() && i == chars.length - 1) {
+                String digit = Integer.toBinaryString(Integer.parseInt(numbers));
+                System.out.print(digit);
+            }
+        }
+    }
+}
