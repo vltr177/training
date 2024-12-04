@@ -79,3 +79,27 @@ class MyProgram{
 
 /* Палиндром
 Вводится строка. определите, является ли она палиндромом. Напоминаю,  что палиндром - это слово/строка, которая читается одинаково слева направо и справа налево. В ответ выведите YES/No */
+import java.util.Scanner;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String text = sc.nextLine().toLowerCase();
+        text = text.replaceAll(" ", "");
+        char[] sym = text.toCharArray();
+        char[] rev_sym = new char [sym.length];
+        boolean flag = true;
+
+        for (int i = 1; i <= sym.length; i++){
+            rev_sym[i-1] = sym[sym.length - i];
+            if (sym[i-1] != rev_sym[i-1]){
+                flag = false;
+                break;
+            }
+        }
+        if (flag)
+            System.out.println("YES");
+        else
+            System.out.println("NO");
+    }
+}
+
