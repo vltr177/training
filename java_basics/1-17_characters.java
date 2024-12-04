@@ -35,3 +35,30 @@ class MyProgram{
 
 // Кого больше?
 // Вводится строка, определите, каких символов в ней больше: цифр или букв? Напоминаю, что знаки препинания и пробелы, например. не являются ни тем ни другим. Если в строчке больше цифр, то выведите на экран слово "Digit", иначе выведите "Letter". Если же их равное количество, то выведите слово "Equal".
+import java.util.Scanner;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String text = sc.nextLine();
+        char[] symbols = text.toCharArray();
+        int letters = 0;
+        int digits = 0;
+        String ans = "";
+        
+
+        for (char symbol : symbols){
+            if (Character.isDigit(symbol))
+                digits++;
+            if (Character.isLetter(symbol))
+                letters++;
+        }
+        if (digits > letters)
+            ans = "Digit";
+        if (digits < letters)
+            ans = "Letter";
+        if (digits == letters)
+            ans = "Equal";
+        System.out.println(ans);
+    }
+}
+
