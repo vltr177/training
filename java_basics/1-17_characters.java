@@ -117,7 +117,6 @@ class MyProgram{
             if (word.length() > len)
                 len = word.length();
         System.out.println(len);
-
     }
 }
 
@@ -125,3 +124,57 @@ class MyProgram{
 Вводится единственная непустая строка, состоящая исключительно из букв латинского алфавита и пробелов. Определить самую часто встречаемую букву и вывести на экран эту букву и количество её вхождений в строку. Учтите, что буквы могут быть записаны в разном регистре. Если таких букв несколько, то выведите первую по алфавиту.
 Примечание
 Ответ записывается в нижнем регистре на одной строке через пробел*/
+import java.util.Scanner;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String text = sc.nextLine().toLowerCase();
+        String calib = "abcdefghijklmnopqrstuvwxyz";
+        text = text.replaceAll(" ", "");
+        char[] symbols = text.toCharArray();
+        char[] sample = calib.toCharArray();        
+        int max = 0;
+        char ans = ' ';
+
+        for (int i=0; i<sample.length; i++){
+            int count = 0;
+            for (int j=0; j < symbols.length; j++){
+                if (sample[i] == symbols[j])
+                    count++;
+            }
+            if (count > max){
+                max = count;
+                ans = sample[i];
+            }
+        }
+        System.out.println(ans + " " + max);
+    }
+}
+
+/*Второклассная задача
+У второклассников очень популярна следующая задача:
+101 = 1
+8181515 = 4
+1111112 = 0
+8888888 = 14
+1010101 = 3
+7000007 = ?
+Преподавателю программирования в некоем Центре для одаренных детей так понравилась эта задачка, что он решил именно ее использовать для проверки знаний математики 2-го класса у своих учеников.
+Пусть первое число x, а соответствующее ему n
+Входные данные
+Единственное неотрицательное число x, не превышающее 101001.
+Выходные данные
+Выведите n. */
+import java.util.Scanner;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        char[] a = sc.nextLine().toCharArray();
+        int count=0;
+        for (int i=0;i<a.length;i++){
+            if (a[i] == '0' || a[i] == '6' || a[i] == '9') count++;
+            if (a[i] == '8') count=count+2;
+        }
+        System.out.println(count);
+    }
+}
