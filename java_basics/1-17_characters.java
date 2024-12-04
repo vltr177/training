@@ -105,3 +105,19 @@ class MyProgram{
 
 //Самое длинное слово
 // Вводится единственная строка без знаков препинания. Определите длину самого длинного слова в ней.
+import java.util.Scanner;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String text = sc.nextLine();
+        String[] words = text.split(" ");
+        int len = 0;
+
+        for (String word : words)
+            if (word.length() > len)
+                len = word.length();
+        System.out.println(len);
+
+    }
+}
+
