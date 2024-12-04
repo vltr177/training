@@ -64,3 +64,16 @@ class MyProgram{
 
 // Уберите лишнее
 // Вводится строка. уберите из неё все символы, которые не являются ни цифрой, ни буквой, ни пробелом.
+import java.util.Scanner;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String text = sc.nextLine();
+        char[] symbols = text.toCharArray();
+        
+        for (char symbol : symbols)
+            if ( Character.isDigit(symbol) || Character.isLetter(symbol) || Character.isSpace(symbol) )
+                System.out.print(symbol);
+    }
+}
+
