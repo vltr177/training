@@ -64,5 +64,23 @@ class MyProgram{
 
 /* Замена элемента
 Напишите программу, которая считает натуральное число n c клавиатуры и создаст список, в котором будут хранится строковые представления чисел от 0 до n-1. Затем программа считывает число m (m < n) и строку s. Замените строкой s элемент на позиции m. Выведите список на экран через пробел. */
+import java.util.Scanner;
+import java.util.ArrayList;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        ArrayList<String> list = new ArrayList<>();
+        int n = sc.nextInt();
+        String s_n = "";
+        for (int i = 0; i<n; i++)
+            list.add(s_n.valueOf(i));
+        int m = sc.nextInt();
+        String s = sc.next();
+        list.add(m,s);
+        for (String word : list)
+            System.out.print(word + " ");
+    }
+}
+
 
 
