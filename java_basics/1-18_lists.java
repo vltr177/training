@@ -109,3 +109,33 @@ class MyProgram{
 push <Название трека> - добавляет трек в плейлист
 pop - удаляет из плейлиста первый трек. При этом на экран выводится запись вида "воспроизводится <название трека>"
 После выполнения всех запросов выведите оставшиеся в очереди треки. Гарантируется, что название трека состоит из одного слова.*/
+import java.util.Scanner;
+import java.util.ArrayList;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        ArrayList<String> playlist = new ArrayList<>();
+        int n = sc.nextInt();
+        sc.nextLine();
+        String cmd = "";
+        String song = "";
+        for (int i = 0; i<n; i++){
+            cmd = sc.nextLine();
+            if (cmd.contains("push")){
+                song = cmd.replace("push ","");
+                playlist.add(song);                
+            }
+            if (cmd.contains("pop")){
+                System.out.println("воспроизводится "+ playlist.get(0));
+                playlist.remove(0);
+            }
+        }
+        for (String play : playlist)
+            System.out.print(play + " ");
+    }
+}
+
+
+/* Добавление элемента
+Напишите программу, которая считает натуральное число n c клавиатуры и создаст список, в котором будут хранится строковые представления чисел от 0 до n-1. Затем программа считывает число m (m <= n) и строку s. Вставьте строку s на позицию m. Выведите список на экран через пробел.*/
+
