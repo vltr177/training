@@ -25,3 +25,28 @@ class MyProgram{
             System.out.print(cell + " ");
     }
 }
+/* Словарь синонимов
+Вам дан словарь, состоящий из пар слов. Каждое слово является синонимом к парному ему слову. Все слова в словаре различны.
+Для слова из словаря, записанного в последней строке, определите его синоним.
+Вводится число n. Затем 2*n строк. И Ещё одна строка - синоним для которой нужно вывести. */
+import java.util.*;
+
+class MyProgram{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        HashMap<String, String> sinonim = new HashMap<String, String>();
+        int n = sc.nextInt();
+        sc.nextLine();
+        for (int i=0; i<n; i++){
+            sinonim.put(sc.nextLine(),sc.nextLine());
+        }
+        String ask = sc.nextLine();
+        for (Map.Entry<String, String> entry : sinonim.entrySet()) {
+            if (entry.getValue().equals(ask)) {
+                System.out.println(entry.getKey());
+            } else if (entry.getKey().equals(ask)) {
+                System.out.println(entry.getValue());
+            }
+        }
+    }
+}
