@@ -30,7 +30,6 @@ class MyProgram{
 Для слова из словаря, записанного в последней строке, определите его синоним.
 Вводится число n. Затем 2*n строк. И Ещё одна строка - синоним для которой нужно вывести. */
 import java.util.*;
-
 class MyProgram{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -48,5 +47,33 @@ class MyProgram{
                 System.out.println(entry.getValue());
             }
         }
+    }
+}
+
+//Что ты сказал?
+//Вводится натуральное число n, затем n слов на разных строках. Определите, какое слово встречается чаще всего. Гарантируется, что такое слово одно. Все слова вводятся в нижнем регистре на русском языке.
+import java.util.HashMap;
+import java.util.Scanner;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        HashMap<String, Integer> words = new HashMap<String, Integer>();
+        int max = 0;
+        String ans = "";
+        int n = sc.nextInt();
+        sc.nextLine();
+        for (int i=0; i<n; i++){
+            String word = sc.next();
+            if (words.containsKey(word))
+                words.replace(word, words.get(word)+1);
+            else
+                words.put(word,1);
+        }
+        for (String key: words.keySet())
+            if (words.get(key)>max){
+                max = words.get(key);
+                ans = key;
+            }
+        System.out.println(ans);
     }
 }
