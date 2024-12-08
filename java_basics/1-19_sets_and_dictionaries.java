@@ -191,3 +191,42 @@ class MyProgram{
 Выходные данные:
 Выведите на экран имя ребёнка и количество слов, которое он знает (они не должны повторяться и их длина должна быть не меньше К). 
 Учтите, что некоторые слова дети могут написать в разных регистрах. Например, слова "Слово" и "слово" - это одно и то же. */
+import java.util.*;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        HashSet<String> numbers = new HashSet<String>();
+        HashMap<String, String> dic = new HashMap<String, String>();
+        String input = "";
+        String name = "";
+        String text = "";
+        String max_author = "";
+        int max = 0;
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        for (int i=0; i<n; i++) {
+            input = sc.nextLine();
+            name = input.substring(0, input.indexOf(":"));
+            text = input.substring(input.indexOf(" ") + 1).toLowerCase();
+            dic.put(name, text);
+        }
+
+        int k = sc.nextInt();
+
+        for (Map.Entry<String, String> entry : dic.entrySet()) {
+            String[] words = entry.getValue().split(" ");
+            for (String word: words){
+                if (word.length()>=k)
+                    numbers.add(word);
+            }
+            if (numbers.size() > max) {
+                max = numbers.size();
+                max_author = entry.getKey();
+            }
+            numbers.clear();
+        }
+        System.out.println(max_author + " " + max);
+    }
+}
