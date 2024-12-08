@@ -32,3 +32,81 @@ class MyProgram{
     }
 }
 
+/* Кратные 3
+Последовательность состоит из натуральных чисел и завершается числом 0. Определите максимальный элемент кратный 3. если такого элемента нет, то выведите на экран "404".
+Числа, следующие за числом 0, считывать не нужно. */
+import java.util.*;
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        HashSet<Integer> numbers = new HashSet<>();
+        int max = 0;
+        while (true){
+            int n = sc.nextInt();
+            if (n == 0)
+                break;
+            numbers.add(n);
+        }
+        for (Integer number : numbers)
+            if ((number%3 == 0) & (number) > max)
+                max = number;
+        if (max == 0)
+            System.out.println("404");
+        else
+            System.out.println(max);
+    }
+}
+
+// Сумма чисел, заканчивающихся на 7 или 3
+// С клавиатуры вводятся 2 числа: a и b соответственно. Необходимо найти сумму всех чисел от a до  b включительно, заканчивающихся на 3 или 7. 
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int sum = 0;
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        for (int i = a; i<=b; i++)
+            if ((i%10 == 3) || (i%10 == 7))
+                sum += i;
+        System.out.println(sum);
+    }
+}
+
+// Max swap Min 
+// С клавиатуры вводится число n (n >= 2) за ним вводится n действительных чисел. Ваша задача - поменять местами максимальный и минимальный элементы. после чего выведите на экран массив через пробел. Гарантируется, что максимальный и минимальный элементы содержатся в единственном экземпляре.
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double temp;
+        int n = sc.nextInt();
+        double[] numbers = new double[n];
+        for (int i = 0; i<n; i++)
+            numbers[i] = sc.nextDouble();
+        double min = numbers[0];
+        double max = numbers[0];
+        int min_index = 0;
+        int max_index = 0;
+        for (int i = 1; i<n; i++){
+            if (numbers[i]<min) {
+                min = numbers[i];
+                min_index = i;
+            }
+            if (numbers[i]>max) {
+                max = numbers[i];
+                max_index = i;
+            }
+        }
+
+        temp = numbers[min_index];
+        numbers[min_index] = numbers[max_index];
+        numbers[max_index] = temp;
+
+        for (int i=0; i<n; i++)
+            System.out.print(numbers[i] + " ");
+    }
+}
+
