@@ -110,3 +110,69 @@ class MyProgram{
     }
 }
 
+// Строка и Столбец
+// Вводятся 2 натуральных числа: n и m. Затем вводится двумерный массив размером n*m. Определите, есть в ней строка и столбец, произведение элементов которой равно 15. Выведите на экран два ответа "YES/NO" построчно.
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] array = new int[n][m];
+        boolean row_flag = false;
+        boolean col_flag = false;
+        int row_mult = 1;
+        int col_mult = 1;
+        
+        for (int i = 0; i<n; i++)
+            for (int j = 0; j<m; j++)
+                array[i][j] = sc.nextInt();
+        
+        for (int i = 0; i<n; i++){
+            for (int j = 0; j<m; j++)
+                row_mult *= array[i][j];
+            if (row_mult == 15){
+                row_flag = true;
+                break;
+            }
+            row_mult = 1;
+        }
+
+        for (int j = 0; j<m; j++){
+            for (int i = 0; i<n; i++)
+                col_mult *= array[i][j];
+            if (col_mult == 15){
+                col_flag = true;
+                break;
+            }
+            col_mult = 1;
+        }    
+
+        if (row_flag)
+            System.out.println("YES");
+        else
+            System.out.println("NO");            
+        if (col_flag)
+            System.out.println("YES");
+        else
+            System.out.println("NO");        
+    }
+}
+
+// Люблю букву А!
+// Вводится строка. Определите, сколько слов в ней начинается с маленькой или большой буквы а (только русской). Словом считается любая последовательность символов, не содержащая пробелов.
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int count = 0;
+        String[] words = sc.nextLine().toLowerCase().split(" ");
+        for (String word : words){
+            if (word.indexOf('а') == 0)
+                count++;
+        }
+        System.out.println(count);
+    }
+}
