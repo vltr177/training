@@ -115,3 +115,36 @@ class Example{
     }
 }
 
+// Простое число
+// Напишите функцию simple, которая принимает одно целое число и определяет, является ли число простым и выводит на экран ответ: "YES"/"NO". Содержание функции main менять запрещено.
+import java.util.Scanner;
+class Example{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        simple(a);
+        simple(b);
+        simple(c);
+    }
+
+    static void simple(int x){
+        boolean flag = true;
+        int up = (int) Math.ceil(Math.sqrt(x));
+        for (int i = 2; i <= up; i++){
+            if (x == i)
+                continue;
+            if (x%i == 0){
+                flag = false;
+                break;
+            }
+        }
+        if (x == 1)
+            flag = false;
+        if (flag)
+            System.out.println("YES");
+        else
+            System.out.println("NO");
+    }
+}
