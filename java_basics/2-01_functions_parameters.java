@@ -187,3 +187,89 @@ class Example{
         }
     }
 }
+
+// Монотонное неубывание
+// Напишите функцию monneub,  которая принимает как аргумент массив целых чисел и находит длину максимального монотонно не убывающего промежутка и выведите её на экран. Содержание функции main менять запрещено.
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner (System.in);
+        int n = sc.nextInt();
+        int [] mas = new int [n];
+        for (int i = 0; i < n; i++)
+            mas[i] = sc.nextInt();
+        monneub(mas);
+    }
+
+    static void monneub (int [] mas) {
+        int count = 1;
+        int count_max = 1;
+        for (int i = 0; i < mas.length -1;i++) {
+            if (mas[i] <= mas[i + 1]) {
+                count++;
+                if (count > count_max)
+                    count_max = count;
+            }
+            else
+                count = 1;
+        }
+        System.out.println(count_max);
+    }
+}
+
+// Сортировка по длине строки
+// Напишите функцию sortByLength,  которая принимает как аргумент строку и сортирует её по длине слова. Если длины слов одинаковы, то сортировать в алфавитном порядке. Содержание функции main менять запрещено.
+import java.util.*;
+class Example{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        sortByLength(s);
+    }
+
+    static void sortByLength (String s) {
+        String[] s1 = s.toLowerCase(Locale.ROOT).split(" ");
+        ArrayList<String> list = new ArrayList<>();
+        Collections.addAll(list,s1); Collections.sort(list);
+        list.sort(Comparator.comparingInt(String::length));
+
+        for (String ma : list)
+            System.out.print(ma + " ");
+
+    }
+}
+
+// Максимин
+// На вход вашей функции maximin даётся зубчатый двумерный массив (сначала даётся число  n - количество строк, а потом сами строки). Найдите максимальное значение среди минимальных элементов каждой строки. Содержание функции main менять запрещено.
+// Как бонус вы можете посмотреть на код считывания неизвестного количества чисел в строке.
+import java.util.Arrays;
+import java.util.Scanner;
+
+class last10 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.nextLine();
+        int[][] mas = new int[n][];
+        for (int i = 0; i < n; i++){
+            String line = sc.nextLine();
+            String[] numbers = line.split(" ");
+            int[] a = new int[numbers.length];
+            for (int j = 0; j < numbers.length; j++)
+                a[j] = Integer.parseInt(numbers[j]);
+            mas[i] = a;
+        }
+        maximin(mas);
+    }
+    static void maximin (int[][] mas){
+        int n = mas.length;
+        int[] min = new int[n];
+        for (int i = 0; i < n; i++) {
+            Arrays.sort(mas[i]);
+            min[i] = mas[i][0];
+        }
+        Arrays.sort(min);
+        System.out.println(min[min.length-1]);
+    }
+}
