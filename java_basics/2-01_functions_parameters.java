@@ -148,3 +148,42 @@ class Example{
             System.out.println("NO");
     }
 }
+
+// Простые числа на промежутке
+// Напишите функцию simpleAB, которая принимает 2 натуральных числа a и b (a <= b) и анализирует все числа на промежутке от a до b включительно на их простоту. Она должна вывести на экран для каждого числа строку вида "{число} - {простое/составное/1}". Содержание функции main менять запрещено.
+import java.util.Scanner;
+
+class Example{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+        simpleAB(x, y);
+    }
+
+    static void simpleAB(int a, int b){
+        for (int i = a; i <= b; i++)
+            simple(i);
+    }
+
+    static void simple(int x){
+        boolean flag = true;
+        int up = (int) Math.ceil(Math.sqrt(x));
+        for (int i = 2; i <= up; i++){
+            if (x == i)
+                continue;
+            if (x%i == 0){
+                flag = false;
+                break;
+            }
+        }
+        if (x == 1)
+            System.out.println(x + " - 1");
+        else {
+            if (flag)
+                System.out.println(x + " - простое");
+            else
+                System.out.println(x + " - составное");
+        }
+    }
+}
