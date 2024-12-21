@@ -130,3 +130,118 @@ class Programm{
         return factorial(n-1) * n;
     }
 }
+
+// Число секунд
+// Напишите функцию second_count, которая принимает как целочисленные аргументы количество дней, часов, минут и секунд, которые прошли со времён какого - либо момента. Ваша функция должна вернуть одно целое число - количество секунд, которое прошло с того момента.  Содержание функции main менять запрещено.
+import java.util.Scanner;
+class Programm{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int d = sc.nextInt();
+        int h = sc.nextInt();
+        int m = sc.nextInt();
+        int s = sc.nextInt();
+        System.out.println("Секунд прошло: " + second_count(d, h, m, s));
+    }
+    static int second_count(int d, int h, int m, int s){
+        return d*24*60*60 + h*60*60 + m*60 + s;
+    }
+}
+
+// Первая строка, сумма которой кратна 7?
+// Напишите функцию find_line7, которая принимает на вход двумерный массив целых чисел и возвращает в ответ индекс первой строчки, сумма элементов которой кратна 7. Если такой строки нет, то возвращает значение -1. Содержание функции main менять запрещено.
+import java.util.Scanner;
+class Programm{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.nextLine();
+        int[][] mas = new int[n][];
+        for (int i = 0; i < n; i++){
+            String line = sc.nextLine();
+            String[] numbers = line.split(" ");
+            int[] a = new int[numbers.length];
+            for (int j = 0; j < numbers.length; j++)
+                a[j] = Integer.parseInt(numbers[j]);
+            mas[i] = a;
+        }
+        int ans = find_line7(mas);
+        if (ans != -1)
+            System.out.println("Сумма строки под номером " + (ans + 1) + " кратна 7");
+        else
+            System.out.println("Таких строк нет");
+    }
+    static int find_line7 (int [][] mas){
+        for (int i = 0; i < mas.length; i++) {
+            int sum = 0;
+            for (int j = 0; j < mas[i].length; j++) {
+                sum += mas[i][j];
+            }
+            if (sum % 7 == 0)
+                return i;
+        }
+        return -1;
+    }
+}
+
+/* Король
+Требуется определить, бьет ли король, стоящий на клетке с указанными координатами (номер строки и номер столбца), фигуру, стоящую на другой указанной клетке. Напишите функцию king_step, которая принимает 4 целых числа  - сначала координаты клетки, в которой стоит король, а потом координаты клетки, в которой стоит фигура, которую он хочет побить. Ваша функция должна вывести на экран:
+1, если координаты короля некорректны;
+2, если координаты фигуры некорректны;
+3, если координаты совпадают;
+"YES"/"NO" - ответ на задачу, если всё в порядке.
+Содержание функции main менять запрещено. */
+import java.util.Scanner;
+class Programm{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int x1 = sc.nextInt();
+        int y1 = sc.nextInt();
+        int x2 = sc.nextInt();
+        int y2 = sc.nextInt();
+        king_step(x1, y1, x2, y2);
+    }
+    static void king_step(int x1, int y1, int x2, int y2) {
+        if (x1 < 1 || x1 > 8 || y1 < 1 || y1 > 8){
+            System.out.println(1);
+            return;
+        }
+        if (x2 < 1 || x2 > 8 || y2 < 1 || y2 > 8){
+            System.out.println(2);
+            return;
+        }
+        if (x1 == x2 & y1 == y2){
+            System.out.println(3);
+            return;
+        }
+        if ( Math.abs(x2-x1)<=1 & Math.abs(y2-y1)<=1)
+            System.out.println("YES");
+        else
+            System.out.println("NO");
+    }
+}
+
+/* Функция Аккермана
+В теории вычислимости важную роль играет функция Аккермана A(m, n), определенная следующим образом:
+Напишите рекурсивную функцию akkerman, которая принимает как аргумент два неотрицательных целых числа и возвращает значение этой функции.  Содержание функции main менять запрещено. */
+import java.util.Scanner;
+
+class Programm{
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int m = sc.nextInt();
+        int n = sc.nextInt();
+        System.out.println(akkerman(m, n));
+    }
+    static int akkerman(int m, int n) {
+        if (m == 0)
+            return n + 1;
+        if (m > 0 & n == 0)
+            return akkerman(m - 1, 1);
+        return akkerman(m - 1, akkerman(m, n - 1));
+    }
+}
+
+// Выпуклый многоугольник
+// Вводится число n (n >= 3), затем даются координаты n точек построчно. Найдите периметр этого многоугольника и его площадь. Выведите ответ построчно. Округлите ваш ответ до сотых.
