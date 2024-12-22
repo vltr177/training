@@ -245,3 +245,37 @@ class Programm{
 
 // Выпуклый многоугольник
 // Вводится число n (n >= 3), затем даются координаты n точек построчно. Найдите периметр этого многоугольника и его площадь. Выведите ответ построчно. Округлите ваш ответ до сотых.
+import java.util.Scanner;
+class Programm{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int [][] mas = new int [n+1][2];
+            for (int i = 0; i < n; i++) {
+                mas[i][0] = sc.nextInt();
+                mas[i][1] = sc.nextInt();
+            }
+        mas[n][0] = mas[0][0];
+        mas[n][1] = mas[0][1];
+        geometry (mas);
+    }
+    static void geometry (int [][] mas){
+        double p = 0;
+        double s = 0;
+        double area1 = 0;
+        double area2 = 0;
+        for (int i=1; i < mas.length; i++){
+            p += Math.sqrt( Math.pow(mas[i][0] - mas[i-1][0],2) + Math.pow(mas[i][1] - mas[i-1][1],2) );
+            area1 += mas[i-1][0] * mas[i][1];
+            area2 += mas[i-1][1] * mas[i][0];
+        }
+        s = Math.abs((area1-area2)/2);
+        System.out.println(Math.round(p*100)/100.0);
+        System.out.println(Math.round(s*100)/100.0);
+    }
+}
+
+// На вершине лесенки, содержащей N ступенек, находится мячик, который начинает прыгать по ним вниз, к основанию. Мячик может прыгнуть на следующую ступеньку, на ступеньку через одну или через 2. 
+//(То есть, если мячик лежит на 8-ой ступеньке, то он может переместиться на 5-ую, 6-ую или 7-ую.) Определить число всевозможных "маршрутов" мячика с вершины на землю.
+
+Подсказка: Если ваша программа работает слишком долго, то может использовать кеш?
