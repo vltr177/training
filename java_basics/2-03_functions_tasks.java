@@ -210,3 +210,24 @@ class Programm {
 Вводятся два натуральных числа N и K (N, K ≤ 6).
 Выходные данные
 Выведите все требуемые цепочки в произвольном порядке – по одной на строке. Никакая цепочка не должна встречаться более одного раза.*/
+import java.util.Scanner;
+
+class Programm {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int K = sc.nextInt();
+        generateChains(N, K, "");
+    }
+
+    public static void generateChains(int N, int K, String chain) {
+        if (N == 0) {
+            System.out.println(chain.trim());
+        } else {
+            for (int i = 1; i <= K; i++) {
+                generateChains(N - 1, K, chain + " " + i);
+            }
+        }
+    }
+}
