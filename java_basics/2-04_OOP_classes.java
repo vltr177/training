@@ -232,3 +232,303 @@ class Main{
         System.out.println(duck.isFly());
     }
 }
+
+/* Письменные принадлежности 1
+Опишите класс WritingMaterials. У класса WritingMaterials должны быть свойства:
+
+name - название предмета (String)
+color - цвет, которым он пишет (String).
+price - его цена (int)
+length - его длина (double)
+draw - ответ на вопрос, умеет ли эта письменная принадлежность писать? (boolean)
+У предмета должны быть методы:
+
+display()  - выводит информацию о предмете в формате:
+"Название: <его название>, Цвет: <цвет>, Длина: <его длина>, Цена: <его цена>, Умеет рисовать: <Да/Нет>.
+
+replace_rod(String) - принимает новый цвет стержня
+priceUp(int) - принимает на вход изменение цены. Увеличивает цену на это число.
+priceDown(int) - принимает на вход изменение цены. Уменьшает цену на это число.
+draw() - Если предмет умеет рисовать, то выводит на экран фразу типа: "<Название> провёл линию. Её цвет - <цвет>.", в противном случае выводит на экран фразу " <Название> не может ничего нарисовать.". */
+public class WritingMaterials {
+    String name;
+    String color;
+    int price;
+    double length;
+    boolean draw;
+
+    public void display(){
+        System.out.println("Название: " + name + ", Цвет: " + color + ", Длина: " + length + ", Цена: " + price + ", Умеет рисовать: " + draw + ".");
+    }
+
+    public void priceUp(int new_price){
+        price += new_price;
+    }
+
+    public void replace_rod(String new_color){
+        color = new_color;
+    }
+
+    public void priceDown(int new_price){
+        price -= new_price;
+    }
+
+    public void draw(){
+        if (draw)
+            System.out.println(name + " провёл линию. " + "Её цвет - " + color + ".");
+        else
+            System.out.println(name + " не может ничего нарисовать.");
+    }
+
+}
+class Main{
+    public static void main(String[] args) {
+        WritingMaterials pen = new WritingMaterials();
+        pen.name = "ручка";
+        pen.color = "Красный";
+        pen.length = 15.6;
+        pen.price = 145;
+        pen.draw = true;
+        pen.display();
+        pen.draw();
+        pen.priceDown(10);
+        pen.display();
+        pen.priceUp(23);
+        pen.display();
+        pen.replace_rod("Синий");
+        pen.draw();
+
+        WritingMaterials ruler = new WritingMaterials();
+        ruler.name = "линейка";
+        ruler.length = 30.0;
+        ruler.price = 25;
+        ruler.draw = false;
+        ruler.display();
+        ruler.draw();
+        ruler.priceUp(13);
+        ruler.display();
+    }
+}
+
+/* Письменные принадлежности 2
+Дополните класс WritingMaterials. У класса WritingMaterials должны быть следующие конструкторы:
+
+Позволяющий создать предмет с его названием и цветом.
+Позволяющий создать предмет с его названием и ценой. При этом в цвете окажется значение "No Color".
+Позволяющий создать предмет с его ценой, длиной и способностью рисовать. При этом в цвете окажется значение "No Color", а в названии - "No Name".
+Позволяющий создать предмет со всеми его свойствами в том же порядке, который указан на предыдущем слайде. */
+public class WritingMaterials {
+    String name;
+    String color;
+    int price;
+    double length;
+    boolean draw;
+
+
+    public WritingMaterials(String name, String color){
+        this.name = name;
+        this.color = color;
+    }
+
+    public WritingMaterials(String name, int price){
+        this.name = name;
+        this.color = "No Color";
+        this.price = price;
+    }
+
+    public WritingMaterials(int price, double length, boolean draw){
+        this.name = "No Name";
+        this.color = "No Color";
+        this.price = price;
+        this.length = length;
+        this.draw = draw;
+    }
+
+    public WritingMaterials(String name, String color, int price, double length, boolean draw){
+        this.name = name;
+        this.color = color;
+        this.price = price;
+        this.length = length;
+        this.draw = draw;
+    }
+
+
+    public void display(){
+        System.out.println("Название: " + name + ", Цвет: " + color + ", Длина: " + length + ", Цена: " + price + ", Умеет рисовать: " + draw + ".");
+    }
+
+    public void priceUp(int new_price){
+        price += new_price;
+    }
+
+    public void replace_rod(String new_color){
+        color = new_color;
+    }
+
+    public void priceDown(int new_price){
+        price -= new_price;
+    }
+
+    public void draw(){
+        if (draw)
+            System.out.println(name + " провёл линию. " + "Её цвет - " + color + ".");
+        else
+            System.out.println(name + " не может ничего нарисовать.");
+    }
+
+}
+class Main{
+    public static void main(String[] args) {
+        WritingMaterials pen = new WritingMaterials("ручка", "Красный", 145, 15.6, true);
+        pen.display();
+        pen.draw();
+        pen.priceDown(10);
+        pen.display();
+        pen.priceUp(23);
+        pen.display();
+        pen.replace_rod("Синий");
+        pen.draw();
+
+        WritingMaterials ruler = new WritingMaterials("линека", 34);
+        ruler.display();
+        ruler.draw();
+
+        WritingMaterials wm1 = new WritingMaterials(23, 67.8, false);
+        wm1.display();
+        wm1.draw();
+
+        WritingMaterials wm2 = new WritingMaterials("Циркуль", "Зелёный");
+        wm2.draw = true;
+        wm2.display();
+        wm2.draw();
+    }
+}
+
+// Письменные принадлежности 3
+// Добавьте инкапсуляцию в класс WritingMaterials. Для каждого свойства в классе WritingMaterials должны быть свои методы get/set (для булевых значений не get, a is).
+public class WritingMaterials {
+    private String name;
+    private String color;
+    private int price;
+    private double length;
+    private boolean draw;
+
+    public WritingMaterials(){
+         }
+
+    public WritingMaterials(String name, String color){
+        this.name = name;
+        this.color = color;
+    }
+
+    public WritingMaterials(String name, int price){
+        this.name = name;
+        this.color = "No Color";
+        this.price = price;
+    }
+
+    public WritingMaterials(int price, double length, boolean draw){
+        this.name = "No Name";
+        this.color = "No Color";
+        this.price = price;
+        this.length = length;
+        this.draw = draw;
+    }
+
+    public WritingMaterials(String name, String color, int price, double length, boolean draw){
+        this.name = name;
+        this.color = color;
+        this.price = price;
+        this.length = length;
+        this.draw = draw;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
+
+    public void setDraw(boolean draw) {
+        this.draw = draw;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getColor() {
+        return this.color;
+    }
+
+    public int getPrice() {
+        return this.price;
+    }
+
+    public double getLength() {
+        return this.length;
+    }
+
+    public boolean isDraw() {
+        return this.draw;
+    }
+
+
+    public void display(){
+        System.out.println("Название: " + name + ", Цвет: " + color + ", Длина: " + length + ", Цена: " + price + ", Умеет рисовать: " + draw + ".");
+    }
+
+    public void priceUp(int new_price){
+        price += new_price;
+    }
+
+    public void replace_rod(String new_color){
+        color = new_color;
+    }
+
+    public void priceDown(int new_price){
+        price -= new_price;
+    }
+
+    public void draw(){
+        if (draw)
+            System.out.println(name + " провёл линию. " + "Её цвет - " + color + ".");
+        else
+            System.out.println(name + " не может ничего нарисовать.");
+    }
+
+}
+class Main{
+    public static void main(String[] args) {
+        WritingMaterials pen = new WritingMaterials();
+        pen.setName("ручка");
+        pen.setColor("Красный");
+        pen.setLength(11.6);
+        pen.setPrice(167);
+        pen.setDraw(true);
+        pen.display();
+        pen.draw();
+        pen.priceDown(10);
+        pen.display();
+        pen.priceUp(23);
+        pen.display();
+        pen.replace_rod("Синий");
+        pen.draw();
+        System.out.println(pen.getName());
+        System.out.println(pen.getColor());
+        System.out.println(pen.getLength());
+        System.out.println(pen.getPrice());
+        System.out.println(pen.isDraw());
+    }
+
+}
