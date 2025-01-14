@@ -290,3 +290,299 @@ class Main{
     }
 }
 
+/* Письменные принадлежности по умолчанию
+Добавьте классу WritingMaterials инициализатор. Задайте в нём для каждого предмета название и цвет по умолчанию. Добавьте инициализаторы и в наследников вашего класса.
+Статичные письменные принадлежности
+Добавьте классу WritingMaterials статичный метод на ваш вкус и статичное свойство String description, в котором будет храниться описание класса. Убедитесь, что его нельзя вызвать у объекта, но можно вызвать у класса. 
+Пронумерованные письменные принадлежности
+Добавьте автоматическую нумерацию создания всех письменных принадлежностей и наследников. Используйте при этом статическое поле. Так же, для удобства, сгенерируйте классу WritingMaterials  метод toString(), который выводил бы подробную информацию о предмете (данные по всем полям, включая номер). Вывод номера в метод display() не добавляйте.
+Финальные письменные принадлежности
+Запретите наследование от класса Ruler, переопределение метода drawCircle у класса Divider и изменение свойства description. */
+
+public class WritingMaterials {
+    public final static String description = "Library of materials";
+
+    public static void info(){
+        System.out.println(description);
+    }
+
+    private String name;
+    private String color;
+    private int price;
+    private double length;
+    private boolean draw;
+    static int counter = 0;
+
+    {
+        name = "Vadik";
+        color = "black";
+        price = 777;
+        length = 35;
+        draw = true;
+    }
+
+    public WritingMaterials(){
+        counter++;
+         }
+
+    public WritingMaterials(String name, String color){
+        this.name = name;
+        this.color = color;
+    }
+
+    public WritingMaterials(String name, int price){
+        this.name = name;
+        this.color = "No Color";
+        this.price = price;
+    }
+
+    public WritingMaterials(int price, double length, boolean draw){
+        this.name = "No Name";
+        this.color = "No Color";
+        this.price = price;
+        this.length = length;
+        this.draw = draw;
+    }
+
+    public WritingMaterials(String name, String color, int price, double length, boolean draw){
+        this.name = name;
+        this.color = color;
+        this.price = price;
+        this.length = length;
+        this.draw = draw;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
+
+    public void setDraw(boolean draw) {
+        this.draw = draw;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getColor() {
+        return this.color;
+    }
+
+    public int getPrice() {
+        return this.price;
+    }
+
+    public double getLength() {
+        return this.length;
+    }
+
+    public boolean isDraw() {
+        return this.draw;
+    }
+
+
+    @Override
+    public String toString(){
+        return this.name + ", " + this.color + ", " + this.length + ", " + this.price + ", " + this.draw + ", " + counter;
+    }
+
+    public void display(){
+        System.out.println("Название: " + name + ", Цвет: " + color + ", Длина: " + length + ", Цена: " + price + ", Умеет рисовать: " + draw + ".");
+    }
+
+    public void priceUp(int new_price){
+        price += new_price;
+    }
+
+    public void replace_rod(String new_color){
+        color = new_color;
+    }
+
+    public void priceDown(int new_price){
+        price -= new_price;
+    }
+
+    public void draw(){
+        if (draw)
+            System.out.println(name + " провёл линий: 1. " + "Их цвет - " + color + ".");
+        else
+            System.out.println(name + " не может ничего нарисовать.");
+    }
+
+    public void draw(int n){
+        if (draw)
+            System.out.println(name + " провёл линий: " + n + ". Их цвет - " + color + ".");
+        else
+            System.out.println(name + " не может ничего нарисовать.");
+    }
+
+    public void draw(String color){
+        if (draw)
+            System.out.println(name + " провёл линий: 1" + ". Их цвет - " + color + ".");
+        else
+            System.out.println(name + " не может ничего нарисовать.");
+    }
+
+    public void draw(String color, int n){
+        if (draw)
+            System.out.println(name + " провёл линий: " + n + ". Их цвет - " + color + ".");
+        else
+            System.out.println(name + " не может ничего нарисовать.");
+    }
+
+}
+
+public class Divider extends WritingMaterials {
+
+    String dividerType;
+    boolean metal;
+
+    {
+        dividerType = "unknown";
+        metal = true;
+    }
+
+    public Divider(){
+    }
+
+    public Divider(String name, String color, int price, double length, boolean draw, String dividerType, boolean metal){
+        super(name, color, price,length, draw);
+        this.dividerType = dividerType;
+        this.metal = metal;
+    }
+
+    public void setDividerType(String dividerType){ this.dividerType = dividerType; }
+    public void setMetal(Boolean metal){ this.metal = metal; }
+    public String getDividerType() { return dividerType; }
+    public Boolean isMetal(){ return metal; }
+
+
+    public final void draw_circle(){
+        System.out.println("Нарисован круг");
+    }
+
+    @Override
+    public void display(){
+        System.out.println(" This is Pen. Название: " + getName() + ", Цвет: " + getColor() + ", Длина: " + getLength() + ", Цена: " + getPrice() + ", Умеет рисовать: " + isDraw() + ", Тип: " + dividerType + ", Метал: " + isMetal() +".");
+    }
+}
+
+public class Pen extends WritingMaterials{
+
+    int countColor;
+    boolean auto;
+
+    {
+        countColor = 1;
+        auto = false;
+    }
+
+    public Pen(){
+        super.setDraw(true);
+    }
+
+    public Pen(String name, String color, int price, double length, boolean draw, int countColor, boolean auto){
+        super(name, color, price,length, draw);
+        this.countColor = countColor;
+        this.auto = auto;
+        super.setDraw(true);
+    }
+
+    public void setCountColor(int countColor){ this.countColor = countColor; }
+    public void setAuto(Boolean auto){ this.auto = auto; }
+    public int getCountColor(){ return countColor; }
+    public Boolean isAuto(){  return auto; }
+
+
+    public void writeMyName(){
+        System.out.println("Вадим");
+    }
+
+    @Override
+    public void display(){
+        System.out.println(" This is Pen. Название: " + getName() + ", Цвет: " + getColor() + ", Длина: " + getLength() + ", Цена: " + getPrice() + ", Умеет рисовать: " + isDraw() + ", Кол-во цветов: " + countColor + ", Авто: " + isAuto() + ".");
+    }
+}
+
+
+public final class Ruler extends WritingMaterials{
+
+    boolean wood ;
+
+    {
+        wood = false;
+    }
+
+    public Ruler(){
+        super.setDraw(false);
+    }
+
+    public Ruler(String name, String color, int price, double length, boolean draw, boolean wood ){
+        super(name, color, price, length, draw);
+        this.wood = wood;
+        super.setDraw(false);
+    }
+
+    public void setWood(Boolean auto){ this.wood = wood; }
+    public Boolean isWood(){  return wood; }
+
+    public void measure(){
+        System.out.println("Сейчас измерим длину");
+    }
+
+    @Override
+    public void display(){
+        System.out.println(" This is Pen. Название: " + getName() + ", Цвет: " + getColor() + ", Длина: " + getLength() + ", Цена: " + getPrice() + ", Умеет рисовать: " + isDraw() + ", Дерево: " + isWood() + ".");
+    }
+
+}
+
+
+class Main{
+    public static void main(String[] args) {
+        WritingMaterials wm = new WritingMaterials("ручка", "Красный", 145, 15.6, true);
+        wm.display();
+
+        Pen p = new Pen();
+        p.setName("Паркер");
+        p.display();
+        p.setCountColor(2);
+        p.setAuto(false);
+        System.out.println(p.getCountColor());
+        System.out.println(p.isAuto());
+        p.writeMyName();
+
+        Ruler r = new Ruler();
+        r.setName("Линейка");
+        r.display();
+        r.setLength(25);
+        r.setWood(true);
+        System.out.println(r.getLength());
+        System.out.println(r.isWood());
+        r.measure();
+
+        Divider d = new Divider();
+        d.setName("Циркуль");
+        d.display();
+        d.setDividerType("С карандашом");
+        d.setMetal(true);
+        System.out.println(d.getDividerType());
+        System.out.println(d.isMetal());
+        d.draw_circle();
+
+        WritingMaterials.info();
+        System.out.println(d);
+    }
+}
