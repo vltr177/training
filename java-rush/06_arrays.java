@@ -130,3 +130,32 @@ public class Solution {
         System.out.println(Arrays.toString(array));
     }
 }
+
+/* Реализуй метод main(String[]), который делит массив array на два подмассива и заполняет ими двумерный массив result. Если длина массива нечетная, то большую часть нужно скопировать в первый подмести. Для разделения массива используй метод Arrays.copyOfRange(int[], int, int). Порядок элементов не меняй.*/
+
+import java.util.Arrays;
+
+/* 
+Делим массив
+*/
+
+public class Solution {
+
+    public static int[][] result = new int[2][];
+    public static int[] array = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+
+    public static void main(String[] args) {
+        int n = array.length / 2;
+        int m = array.length % 2;
+        int len = array.length;
+        if (m == 0){
+            result[0] = Arrays.copyOfRange(array, 0, n);
+            result[1] = Arrays.copyOfRange(array, n, len);
+        }
+        else {
+            result[0] = Arrays.copyOfRange(array, 0, n+1);
+            result[1] = Arrays.copyOfRange(array, n+1, len); 
+        }
+        System.out.println(Arrays.deepToString(result));
+    }
+}
