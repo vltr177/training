@@ -99,3 +99,34 @@ public class Solution {
         }
     }
 }
+
+/*Pеализуй статический метод main(String[]), который заполняет массив array значениями valueStart и valueEnd.
+Если длина массива четная, его первую половину нужно заполнить значениями valueStart, а вторую — valueEnd. Если длина массива нечётная, то первую большую часть заполнить значениями valueStart, вторую меньшую — valueEnd. Для заполнения массива используй метод Arrays.fill(int[], int, int, int).*/
+
+import java.util.Arrays;
+
+/* 
+Заполняем массив
+*/
+
+public class Solution {
+
+    public static int[] array = new int[21];
+    public static int valueStart = 10;
+    public static int valueEnd = 13;
+
+    public static void main(String[] args) {
+        int n = array.length / 2;
+        int m = array.length % 2;
+        int len = array.length;
+        if (m == 0){
+            Arrays.fill(array, 0, n, valueStart);
+            Arrays.fill(array, n, len, valueEnd);
+        }
+        else {
+            Arrays.fill(array, 0, n+1, valueStart);
+            Arrays.fill(array, n+1, len, valueEnd);
+        }
+        System.out.println(Arrays.toString(array));
+    }
+}
