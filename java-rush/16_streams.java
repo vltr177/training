@@ -25,3 +25,39 @@ public class Solution {
     }
 }
 
+
+/* Напиши программу, которая считывает из консоли имя текстового файла, далее читает символы из этого файла (используй метод readAllLines(Path) класса Files) и выводит на экран все, за исключением точки, запятой и пробела.
+Требования:
+•	Программа должна считать с консоли путь к файлу.
+•	Программа должна вывести в консоль содержимое файла согласно условию.
+•	Для чтения строк из файла должен быть использован метод readAllLines(Path) класса Files.
+•	Не используй следующие классы: File, FileInputStream, FileOutputStream, FileReader, FileWriter пакета java.io. */
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Scanner;
+
+/* 
+Фейсконтроль
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+        try {
+            List<String> lines = Files.readAllLines(Paths.get(console.nextLine()));
+            for (String string : lines){
+                char[] chars = string.toCharArray();
+                for (char c : chars){
+                    if (c != '.' && c != ',' && c != ' '){
+                        System.out.print(c);
+                    }
+                }
+            System.out.println();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
